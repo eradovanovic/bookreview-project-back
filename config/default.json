@@ -1,0 +1,17 @@
+{
+  "database": {
+    "client": "mysql2",
+    "connection": {
+      "host": "127.0.0.1",
+      "port": 3306,
+      "user": "root",
+      "password": "deversity123!",
+      "database": "nodejs_tut"
+    }
+  },
+  "authorization": {
+    "secret": "SomeSecretKey",
+    "accessExpiry": 8400,
+    "saltRounds": 7
+  }
+}
