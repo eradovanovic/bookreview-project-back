@@ -51,6 +51,7 @@ export class AuthService {
               email: loggedInUser.email,
               name: loggedInUser.name,
               surname: loggedInUser.surname,
+              photo: loggedInUser.photo,
               type: userRoles[0],
             },
             token: userToken,

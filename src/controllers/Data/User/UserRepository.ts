@@ -25,7 +25,7 @@ export class UserRepository {
     async getUserByUsername(username: string): Promise<UserDTO> {
         return new Promise ((res, rej) => {
             return this.database.instance('users')
-                .select('username', 'email', 'password', 'name', 'surname')
+                .select('username', 'email', 'password', 'name', 'surname', 'photo')
                 .where('username', username)
                 .then(result => {
                     if (result?.length) {
