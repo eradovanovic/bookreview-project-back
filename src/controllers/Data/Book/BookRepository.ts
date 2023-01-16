@@ -179,7 +179,7 @@ export class BookRepository {
                         return res(result.length)
                     }
                     else {
-                        rej(new CustomError(500, 'Error fetching books'))
+                       return res(0)
                     }
                 })
         })
@@ -211,7 +211,7 @@ export class BookRepository {
                             total
                         });
                     } else {
-                        rej(new CustomError(500, 'Internal server error'));
+                        return res({ books: [], total: 0});
                     }
                 })
         })

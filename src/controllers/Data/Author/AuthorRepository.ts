@@ -13,7 +13,7 @@ export class AuthorRepository {
             return this.database.instance('authors')
                 .leftJoin('book_authors', 'authors.id', '=', 'book_authors.author_id')
                 .select('authors.*')
-                .count('* as bookNum' )
+                .count('book_authors.book_id as bookNum' )
                 .groupBy('authors.id')
                 .offset((params.page - 1) * params.authorsPerPage)
                 .limit(params.authorsPerPage)

@@ -29,6 +29,7 @@ export class AuthService {
             name: loggedInUser.name,
             surname: loggedInUser.surname,
             email: loggedInUser.email,
+            photo: loggedInUser.photo,
             type: userRoles[0],
           },
         })
