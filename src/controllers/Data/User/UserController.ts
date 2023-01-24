@@ -1,7 +1,6 @@
 import {JsonController, Get, Param, Post, Delete, Body, Put, Patch, UseBefore} from "routing-controllers";
 import {Service} from "typedi";
 import {UserRepository} from "./UserRepository";
-import {isAuthorized} from "../../../middleware/IsAuthorized";
 import {isSameUser} from "../../../middleware/IsSameUser";
 
 
