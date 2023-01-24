@@ -160,5 +160,4 @@ export class UserRepository {
                 .then(() => res('OK'))
         })
     }
-
 }

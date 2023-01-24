@@ -10,8 +10,8 @@ import { CustomError } from "./CustomError"
  */
 @Service()
 export class IsSameUser {
-  guard(jwt: any, uuid: number): boolean {
-    return jwt && jwt.subject === uuid;
+  guard(jwt: any, username: string): boolean {
+    return jwt && jwt.subject === username;
   }
 }
 
@@ -21,7 +21,7 @@ export class IsSameUser {
 export function isSameUser(): any {
   const check: IsSameUser = Container.get(IsSameUser);
   return function use(request: JwtRequest, response: Response, next?: NextFunction) {
-    const isSame = check.guard(request.jwt, +request.params.id)
+    const isSame = check.guard(request.jwt, request.params.username)
     if (isSame) {
       return next()
     }

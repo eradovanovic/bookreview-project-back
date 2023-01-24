@@ -10,10 +10,6 @@ export class UserController {
     constructor(private userRepository: UserRepository) {
     }
 
-    @Get('/')
-    getAll() {
-        return 'This action returns all users';
-    }
 
     @Get('/:username')
     getOne(@Param('username') username: string) {
@@ -41,4 +37,9 @@ export class UserController {
         return this.userRepository.deleteUser(username)
     }
 
+    @UseBefore(isSameUser())
+    @Get('/:username/uploadPhoto')
+    uploadPhoto(@Param('username') username: string) {
+        return new Promise((res, rej) => res('054e02d81609aa2bba6579bb124c2202'))
+    }
 }
