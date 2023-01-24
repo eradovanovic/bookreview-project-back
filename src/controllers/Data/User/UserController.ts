@@ -2,6 +2,8 @@ import {JsonController, Get, Param, Post, Delete, Body, Put, Patch, UseBefore} f
 import {Service} from "typedi";
 import {UserRepository} from "./UserRepository";
 import {isAuthorized} from "../../../middleware/IsAuthorized";
+import {isSameUser} from "../../../middleware/IsSameUser";
+
 
 @JsonController('/users')
 @Service({global: true})
@@ -29,7 +31,7 @@ export class UserController {
         return this.userRepository.updateUser({...user, username})
     }
 
-    @UseBefore(isAuthorized(['user', 'admin']))
+    @UseBefore(isSameUser())
     @Put('/:username/passwords')
     changePassword(@Param('username') username: string, @Body() user: any) {
         return this.userRepository.changePassword({...user, username})
