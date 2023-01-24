@@ -2,11 +2,18 @@ import {JsonController, Get, Param, Post, Delete, Body, Put, UseBefore} from "ro
 import {Service} from "typedi";
 import {BookRepository} from "./BookRepository";
 import {isAuthorized} from "../../../middleware/IsAuthorized";
+import {isSameUser} from "../../../middleware/IsSameUser";
 
 @JsonController('/books')
 @Service({global: true})
 export class BookController {
     constructor(private bookRepository: BookRepository) {
+    }
+
+    @UseBefore(isAuthorized(['admin']))
+    @Get('/uploadPhoto')
+    uploadPhoto() {
+        return new Promise((res, rej) => res('054e02d81609aa2bba6579bb124c2202'))
     }
 
     @Post('/')
@@ -34,5 +41,4 @@ export class BookController {
     search(@Body() body: any) {
         return this.bookRepository.search(body);
     }
-
 }
