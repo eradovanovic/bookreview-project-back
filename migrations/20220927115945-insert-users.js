@@ -24,8 +24,8 @@ exports.up = function(db, callback) {
   // return Promise.all(promises)
   const sql = "INSERT INTO users (username, password, type, name, surname, email, photo) values " +
       "('admin', 'Passw0rd!', 1, null, null, null, null)," +
-      "('jane', 'Passw0rd!', 2, 'Jane', 'Doe', 'jane@gmail.com', null)," +
-      "('john', 'Passw0rd!', 2, 'John', 'Doe', 'john@gmail.com', null)"
+      "('jane', 'Passw0rd!', 2, 'Jane', 'Doe', 'jane@gmail.com', 'https://randomuser.me/api/portraits/women/79.jpg')," +
+      "('john', 'Passw0rd!', 2, 'John', 'Doe', 'john@gmail.com', 'https://randomuser.me/api/portraits/men/62.jpg')"
   db.runSql(sql, callback)
 };
 
