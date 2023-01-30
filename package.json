@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "start": "nodemon ./src/server.ts",
+    "start": "db-migrate up && nodemon ./src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate:dev": "db-migrate up -e dev",
     "migrate:prod": "db-migrate up -e prod"
