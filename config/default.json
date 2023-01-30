@@ -6,7 +6,7 @@
       "port": 3306,
       "user": "root",
       "password": "Passw0rd!",
-      "database": "testdb"
+      "database": "booksdb"
     }
   },
   "authorization": {
