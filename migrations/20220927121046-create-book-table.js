@@ -27,11 +27,12 @@ exports.up = function(db, callback) {
         type: 'string',
         notNull: true
       },
-      'description': 'string',
+      'description': {
+        type: 'string',
+        length: 3000,
+      },
       'date_published': 'datetime',
       'photo': 'string',
-      'rating': {type: 'real', defaultValue: 0.0},
-      'number_of_reviews': {type: 'int', defaultValue: 0}
     }
   }, callback);
 };
