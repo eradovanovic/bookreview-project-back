@@ -8,7 +8,6 @@ requirements: installed mysql + mysql Workbench, username and password same as i
 ```
 npm install
 MYSQL_FLAGS="-CONNECT_WITH_DB" db-migrate db:create booksdb
-db-migrate up
 npm start
 ```
 
