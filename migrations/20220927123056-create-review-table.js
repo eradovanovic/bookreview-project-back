@@ -27,7 +27,10 @@ exports.up = function(db, callback) {
         type: 'real',
         notNull: true
       },
-      'review': 'string',
+      'review': {
+        type: 'string',
+        length: 300
+      },
       'date_reviewed': 'datetime',
       'book_id': {
         type: 'int',

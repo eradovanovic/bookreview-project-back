@@ -8,6 +8,24 @@ export class AuthorRepository {
     constructor(private database: Database, ) {
     }
 
+    async getAuthorsCnt (): Promise<Number> {
+        return new Promise((res, rej) => {
+            return this.database.instance('authors')
+                .leftJoin('book_authors', 'authors.id', '=', 'book_authors.author_id')
+                .select('authors.*')
+                .count('book_authors.book_id as bookNum' )
+                .groupBy('authors.id')
+                .then(result => {
+                    if (result && result.length) {
+                        return res(result.length)
+                    } else {
+                        return res(0)
+                    }
+                })
+                .catch(error => res(0))
+        })
+    }
+
     async getAllAuthors(params:any): Promise<Object> {
         return new Promise((res, rej) => {
             return this.database.instance('authors')
@@ -17,11 +35,12 @@ export class AuthorRepository {
                 .groupBy('authors.id')
                 .offset((params.page - 1) * params.authorsPerPage)
                 .limit(params.authorsPerPage)
-                .then(result => {
+                .then(async result => {
+                    const authorsCnt = await this.getAuthorsCnt()
                     if (result && result.length) {
                         return res({
                             authors: [...result],
-                            total: result.length
+                            total: authorsCnt
                         })
                     } else {
                         rej(new CustomError(500, 'Internal server error'));

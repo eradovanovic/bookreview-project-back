@@ -28,7 +28,10 @@ exports.up = function(db, callback) {
         notNull: true
       },
       'surname': 'string',
-      'biography': 'string',
+      'biography': {
+        type: 'string',
+        length: 3000,
+      },
       'photo': 'string'
     }
   }, callback);};

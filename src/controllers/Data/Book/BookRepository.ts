@@ -132,7 +132,10 @@ export class BookRepository {
                             total: count
                         });
                     } else {
-                        rej(new CustomError(500, 'Internal server error'));
+                        res({
+                            books: [],
+                            total: 0
+                        })
                     }
                 })
                 .catch(error => {
