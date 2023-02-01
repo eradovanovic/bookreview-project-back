@@ -250,7 +250,11 @@ export class BookRepository {
             return this.database.instance('books')
                 .leftJoin('book_authors', 'books.id', '=', 'book_authors.book_id')
                 .leftJoin('authors', 'authors.id', '=', 'book_authors.author_id')
+                .leftJoin('reviews', 'books.id', '=', 'reviews.book_id')
                 .select('books.*', 'authors.id as author_id', 'authors.name', 'authors.surname')
+                .count('reviews.id as number_of_reviews')
+                .avg('reviews.rating as rating')
+                .groupBy('books.id', 'author_id', 'authors.name', 'authors.surname')
                 .modify(function(queryBuilder) {
                     if (params.input || params.booksPerPage !== Number.MAX_SAFE_INTEGER) {
                         queryBuilder.whereRaw('title LIKE ?', [`%${params.input}%`])
