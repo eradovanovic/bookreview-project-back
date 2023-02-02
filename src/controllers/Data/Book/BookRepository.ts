@@ -154,8 +154,6 @@ export class BookRepository {
                     description: book.description,
                     date_published: new Date().toJSON().slice(0, 19).replace('T', ' '),
                     photo: book.photo,
-                    rating: 0,
-                    number_of_reviews: 0
                 }).then(async result => {
                     if (result && result.length) {
                         const book_genre_objs = [];
