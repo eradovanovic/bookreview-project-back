@@ -14,7 +14,7 @@ export class BookDTO {
     authorID :number;
     author: string;
     datePublished: string;
-    photo: Blob;
+    photo: string;
     numberOfReviews: number;
     rating: number;
 }
