@@ -1,7 +1,7 @@
 import { Inject, Service } from 'typedi'
 import * as crypt from 'bcrypt'
 
-import { UserDTO } from "../Data/User/UserDto"
+import { UserDTO } from "../Data/User/UserDTO"
 import { AuthenticateCommand } from './AuthenticateCommand'
 import { Tokenizer } from './jwt/Tokenizer'
 import { UserRepository } from "../Data/User/UserRepository"
